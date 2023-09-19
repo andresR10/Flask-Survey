@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %} {{title}} {% endblock %}
+
+{% block header %} {{title}} {% endblock %}
+
+{% block content %}
+<p>{{ instructions }}</p>
+<form method="post" action="{{ url_for('question', question_number= next_question) }}">
+    {% for choice in choice %}
+        <label>
+            <input type="radio" name="response" value="{{choice}}" required>
+            {{ choice }}
+        </label><br>
+    {% endfor %}
+    <button type="submit" class="btn btn-primary">{{ button_text }}</button>
+</form>
+
+{% endblock %}
